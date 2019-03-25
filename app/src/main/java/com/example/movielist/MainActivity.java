@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+import android.content.Intent;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){
                 Snackbar.make(view, "movie added", Snackbar.LENGTH_SHORT)
                         .setAction("Action", null).show();
+                Intent intent = new Intent(MainActivity.this, AddNewMovieActivity.class);
+                startActivity(intent);
             }
 
         });

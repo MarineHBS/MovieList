@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">MovieList</string>
+    <string name="title_activity_add_new_movie">AddNewMovieActivity</string>
+    <string-array name="genres_array">
+        <item>Action</item>
+        <item>Adventure</item>
+        <item>Fantasy</item>
+        <item>Drama</item>
+        <item>Historical</item>
+        <item>Horror</item>
+        <item>Mystery</item>
+        <item>Thriller</item>
+    </string-array>
 </resources>

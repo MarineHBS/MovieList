@@ -9,17 +9,19 @@
         android:id="@+id/movie_name_edit_text"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:text="Name of the movie"
+        android:text="@string/name_of_the_movie"
         android:inputType="text"/>
     <EditText
         android:id="@+id/movie_description_edit_text"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:inputType="text"/>
+        android:text="@string/description_of_the_movie"
+        android:inputType="textMultiLine"/>
     <EditText
         android:id="@+id/movie_year_edit_text"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:text="@string/year_of_the_movie"
         android:inputType="number"/>
     <Spinner
         android:id="@+id/genres_spinner"

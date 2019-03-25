@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">MovieList</string>
     <string name="title_activity_add_new_movie">AddNewMovieActivity</string>
+    <string name="name_of_the_movie">Name of the movie</string>
+    <string name="description_of_the_movie">Description of the movie</string>
+    <string name="year_of_the_movie">Year of the movie</string>
     <string-array name="genres_array">
         <item>Action</item>
         <item>Adventure</item>

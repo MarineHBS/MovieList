@@ -37,10 +37,10 @@ before_script:
 
 notifications:
  email:
- recipients:
- - marinehbs@gmail.com
- on_success: always
- on_failure: always
+   recipients:
+   - marinehbs@gmail.com
+   on_success: always
+   on_failure: always
 
 
 

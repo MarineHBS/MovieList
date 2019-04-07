@@ -1,30 +1,25 @@
-package com.example.movielist;
+package com.example.movielist.ui.main;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 import android.content.Intent;
 
-import com.example.movielist.Models.Movie;
+import com.example.movielist.AddNewMovieActivity;
+import com.example.movielist.R;
 
 public class MainActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
+    /*private RecyclerView recyclerView;
     private RecyclerView.Adapter myAdapter;
     private RecyclerView.LayoutManager layoutManager;
-
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+/*
         recyclerView = (RecyclerView) findViewById(R.id.movies_recycler_view);
         recyclerView.setHasFixedSize(true);
 
@@ -32,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
 
         myAdapter = new MovieAdapter(myDataset);
-        recyclerView.setAdapter(myAdapter);
+        recyclerView.setAdapter(myAdapter);*/
 
         FloatingActionButton add = findViewById(R.id.addNewMovie);
         add.setOnClickListener(new View.OnClickListener(){
@@ -49,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-}
+}/*
     public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter>{
         public static class MovieViewHolder extends RecyclerView.ViewHolder{
             public TextView textView;
@@ -79,3 +74,4 @@ public class MainActivity extends AppCompatActivity {
             return myDataset.length;
         }
     }
+*/

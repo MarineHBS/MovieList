@@ -1,4 +1,4 @@
-package com.example.movielist.Models;
+package com.example.movielist.model;
 
 public class Movie {
     String title;

@@ -6,72 +6,58 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.content.Intent;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.movielist.AddNewMovieActivity;
+import com.example.movielist.MovieListApplication;
 import com.example.movielist.R;
+import com.example.movielist.model.Movie;
+import com.example.movielist.ui.movies.MoviesActivity;
 
-public class MainActivity extends AppCompatActivity {
-    /*private RecyclerView recyclerView;
-    private RecyclerView.Adapter myAdapter;
-    private RecyclerView.LayoutManager layoutManager;
-*/
+import java.util.List;
+
+import javax.inject.Inject;
+
+public class MainActivity extends AppCompatActivity implements MainScreen {
+    public static final String KEY_MOVIES = "KEY_MOVIES";
+    @Inject
+    MainPresenter mainPresenter;
+    private EditText etMovies;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-/*
-        recyclerView = (RecyclerView) findViewById(R.id.movies_recycler_view);
-        recyclerView.setHasFixedSize(true);
 
-        layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        // MovieListApplication.injector.inject(this);
 
-        myAdapter = new MovieAdapter(myDataset);
-        recyclerView.setAdapter(myAdapter);*/
+        etMovies = findViewById(R.id.etMovie);
 
-        FloatingActionButton add = findViewById(R.id.addNewMovie);
-        add.setOnClickListener(new View.OnClickListener(){
+        Button btnShowMovies = findViewById(R.id.btnShowMovies);
+        btnShowMovies.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-                Snackbar.make(view, "movie added", Snackbar.LENGTH_SHORT)
-                        .setAction("Action", null).show();
-                Intent intent = new Intent(MainActivity.this, AddNewMovieActivity.class);
-                startActivity(intent);
+            public void onClick(View v) {
+                // mainPresenter.showMoviesSearchList(etMovies.getText().toString());
+                showMovies("");
             }
-
         });
-
-
-
     }
-}/*
-    public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter>{
-        public static class MovieViewHolder extends RecyclerView.ViewHolder{
-            public TextView textView;
-            public MovieViewHolder(TextView v){
-                super(v);
-                textView = v;
-            }
-        }
-        @Override
-        public MovieAdapter.MovieViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-            TextView v = (TextView) LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.support_simple_spinner_dropdown_item, parent, false);
-            MovieViewHolder vh = new MovieViewHolder(v);
-            return vh;
-        }
-        @Override
-        public void onBindViewHolder(MovieViewHolder holder, int position) {
-            // - get element from your dataset at this position
-            // - replace the contents of the view with that element
-            holder.textView.setText(myDataset[position]);
 
-        }
-
-        // Return the size of your dataset (invoked by the layout manager)
-        @Override
-        public int getItemCount() {
-            return myDataset.length;
-        }
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
-*/
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    public void showMovies(String movieSearchTerm) {
+        Intent intent = new Intent(MainActivity.this, MoviesActivity.class);
+        intent.putExtra(KEY_MOVIES, movieSearchTerm);
+        startActivity(intent);
+    }
+}

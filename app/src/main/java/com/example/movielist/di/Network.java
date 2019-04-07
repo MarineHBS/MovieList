@@ -1,4 +1,4 @@
-package com.example.movielist.network;
+package com.example.movielist.di;
 
 import javax.inject.Qualifier;
 

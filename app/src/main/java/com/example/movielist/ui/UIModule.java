@@ -2,7 +2,7 @@ package com.example.movielist.ui;
 
 import android.content.Context;
 
-import com.example.movielist.network.Network;
+import com.example.movielist.di.Network;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;

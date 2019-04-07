@@ -22,4 +22,5 @@
         <item>Good</item>
         <item>Excellent</item>
     </string-array>
+    <string name="title_activity_movies">MoviesActivity</string>
 </resources>

@@ -39,12 +39,12 @@ public class MoviesFragment extends Fragment implements MoviesScreen {
         super.onAttach(context);
 
         movie = getActivity().getIntent().getStringExtra(MainActivity.KEY_MOVIES);
-        //moviesPresenter.attachScreen(this);
+        moviesPresenter.attachScreen(this);
     }
 
     @Override
     public void onDetach() {
-        //moviesPresenter.detachScreen();
+        moviesPresenter.detachScreen();
         super.onDetach();
     }
 
@@ -69,6 +69,7 @@ public class MoviesFragment extends Fragment implements MoviesScreen {
     @Override
     public void onResume() {
         super.onResume();
+        moviesPresenter.refreshMovies();
     }
 
     public void showMovies(List<Movie> movies) {

@@ -1,7 +1,5 @@
 package com.example.movielist.ui.main;
 
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,13 +7,8 @@ import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.movielist.AddNewMovieActivity;
-import com.example.movielist.MovieListApplication;
 import com.example.movielist.R;
-import com.example.movielist.model.Movie;
 import com.example.movielist.ui.movies.MoviesActivity;
-
-import java.util.List;
 
 import javax.inject.Inject;
 

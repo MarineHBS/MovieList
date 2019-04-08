@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
-    <include layout="@layout/content_movies"/>
+    <!--<include layout="@layout/content_movies"/>-->
 
 
     <android.support.design.widget.FloatingActionButton

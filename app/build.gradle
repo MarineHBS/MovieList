@@ -16,6 +16,26 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
+    }
+}
+
+ext {
+    okhttp_version = "3.0.1"
+    oltu_version = "1.0.0"
+    retrofit_version = "2.0.0-beta3"
+    gson_version = "2.4"
+    swagger_annotations_version = "1.5.0"
+    junit_version = "4.12"
+
 }
 
 dependencies {
@@ -31,6 +51,14 @@ dependencies {
     implementation 'com.google.dagger:dagger:2.21'
     annotationProcessor "com.google.dagger:dagger-compiler:2.21"
     compileOnly 'javax.annotation:jsr250-api:1.0'
+
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+
+    implementation "com.google.code.gson:gson:$gson_version"
+    implementation "io.swagger:swagger-annotations:$swagger_annotations_version"
+    implementation "org.apache.oltu.oauth2:org.apache.oltu.oauth2.client:$oltu_version"
 
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.5.0'

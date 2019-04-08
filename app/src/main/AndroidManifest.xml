@@ -15,7 +15,7 @@
             android:name=".ui.movies.MoviesActivity"
             android:label="@string/title_activity_movies" />
         <activity
-            android:name=".AddNewMovieActivity"
+            android:name=".ui.addmovie.AddNewMovieActivity"
             android:label="@string/title_activity_add_new_movie" />
         <activity android:name=".ui.main.MainActivity">
             <intent-filter>

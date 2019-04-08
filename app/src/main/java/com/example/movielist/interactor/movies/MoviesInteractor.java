@@ -1,13 +1,17 @@
 package com.example.movielist.interactor.movies;
 
 import com.example.movielist.MovieListApplication;
+import com.example.movielist.interactor.movies.events.GetMovieEvent;
 import com.example.movielist.interactor.movies.events.GetMoviesEvent;
+import com.example.movielist.model.Movie;
 import com.example.movielist.model.MoviesResult;
 import com.example.movielist.model.Token;
 import com.example.movielist.network.MoviesApi;
 import com.example.movielist.network.TokenApi;
 
 import org.greenrobot.eventbus.EventBus;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -20,37 +24,48 @@ import static com.example.movielist.network.NetworkConfig.TOKEN_CLIENT_CREDENTIA
 
 public class MoviesInteractor {
     MoviesApi moviesApi;
-    TokenApi tokenApi;
 
     @Inject
-    public MoviesInteractor(MoviesApi artistsApi, TokenApi tokenApi) {
-        this.moviesApi = artistsApi;
-        this.tokenApi = tokenApi;
+    public MoviesInteractor(MoviesApi moviesApi) {
+        this.moviesApi = moviesApi;
         MovieListApplication.injector.inject(this);
     }
 
-    public void getMovies(String movieQuery) {
-        /*
-        Call<Token> tokenQueryCAll = tokenApi.getToken(TOKEN_CLIENT_CREDENTIALS, TOKEN_AUTHORISATION);
-
+    public void getMovies() {
         GetMoviesEvent event = new GetMoviesEvent();
         try {
-            Response<Token> tokenResponse = tokenQueryCAll.execute();
-            String authToken = AUTH_PREFIX + tokenResponse.body().getAccessToken();
 
-            Call<MoviesResult> moviesQueryCall = moviesApi.getMovies(authToken, movieQuery, "movie", 0, 3);
+            Call<List<Movie>> moviesQueryCall = moviesApi.getMovies();
 
-            Response<MoviesResult> response = moviesQueryCall.execute();
+            Response<List<Movie>> response = moviesQueryCall.execute();
             if (response.code() != 200) {
                 throw new Exception("Result code is not 200");
             }
             event.setCode(response.code());
-            event.setMovies(response.body().getMovies());
+            event.setMovies(response.body());
             EventBus.getDefault().post(event);
         } catch (Exception e) {
             event.setThrowable(e);
             EventBus.getDefault().post(event);
         }
-        */
+    }
+
+    public void getMovieByTitle(String title) {
+        GetMovieEvent event = new GetMovieEvent();
+        try {
+
+            Call<Movie> movieQueryCall = moviesApi.getMovieByTitle(title);
+
+            Response<Movie> response = movieQueryCall.execute();
+            if (response.code() != 200) {
+                throw new Exception("Result code is not 200");
+            }
+            event.setCode(response.code());
+            event.setMovie(response.body());
+            EventBus.getDefault().post(event);
+        } catch (Exception e) {
+            event.setThrowable(e);
+            EventBus.getDefault().post(event);
+        }
     }
 }

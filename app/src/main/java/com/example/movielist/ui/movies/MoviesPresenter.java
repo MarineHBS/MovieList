@@ -37,6 +37,15 @@ public class MoviesPresenter extends Presenter<MoviesScreen> {
 
     }
 
+    public void refreshMovies(){
+        networkExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                moviesInteractor.getMovies();
+            }
+        });
+    }
+
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(final GetMoviesEvent event) {
         if (event.getThrowable() != null) {

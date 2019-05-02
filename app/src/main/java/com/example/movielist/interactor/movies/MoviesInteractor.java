@@ -14,31 +14,21 @@ import javax.inject.Inject;
 import retrofit2.Call;
 import retrofit2.Response;
 
-import static com.example.movielist.network.NetworkConfig.AUTH_PREFIX;
-import static com.example.movielist.network.NetworkConfig.TOKEN_AUTHORISATION;
-import static com.example.movielist.network.NetworkConfig.TOKEN_CLIENT_CREDENTIALS;
 
 public class MoviesInteractor {
     MoviesApi moviesApi;
-    TokenApi tokenApi;
 
     @Inject
-    public MoviesInteractor(MoviesApi artistsApi, TokenApi tokenApi) {
+    public MoviesInteractor(MoviesApi artistsApi) {
         this.moviesApi = artistsApi;
-        this.tokenApi = tokenApi;
         MovieListApplication.injector.inject(this);
     }
 
     public void getMovies(String movieQuery) {
-        /*
-        Call<Token> tokenQueryCAll = tokenApi.getToken(TOKEN_CLIENT_CREDENTIALS, TOKEN_AUTHORISATION);
-
         GetMoviesEvent event = new GetMoviesEvent();
         try {
-            Response<Token> tokenResponse = tokenQueryCAll.execute();
-            String authToken = AUTH_PREFIX + tokenResponse.body().getAccessToken();
 
-            Call<MoviesResult> moviesQueryCall = moviesApi.getMovies(authToken, movieQuery, "movie", 0, 3);
+            Call<MoviesResult> moviesQueryCall = moviesApi.getMovies(movieQuery, "movie", 0, 3);
 
             Response<MoviesResult> response = moviesQueryCall.execute();
             if (response.code() != 200) {
@@ -51,6 +41,6 @@ public class MoviesInteractor {
             event.setThrowable(e);
             EventBus.getDefault().post(event);
         }
-        */
+
     }
 }

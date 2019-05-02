@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.movielist.MovieListApplication;
 import com.example.movielist.R;
 import com.example.movielist.model.Movie;
 import com.example.movielist.ui.main.MainActivity;
@@ -31,7 +32,7 @@ public class MoviesFragment extends Fragment implements MoviesScreen {
     private RecyclerView recyclerViewMovies;
 
     public MoviesFragment(){
-
+        MovieListApplication.injector.inject(this);
     }
 
     @Override
@@ -39,12 +40,12 @@ public class MoviesFragment extends Fragment implements MoviesScreen {
         super.onAttach(context);
 
         movie = getActivity().getIntent().getStringExtra(MainActivity.KEY_MOVIES);
-        //moviesPresenter.attachScreen(this);
+        moviesPresenter.attachScreen(this);
     }
 
     @Override
     public void onDetach() {
-        //moviesPresenter.detachScreen();
+        moviesPresenter.detachScreen();
         super.onDetach();
     }
 
@@ -69,6 +70,7 @@ public class MoviesFragment extends Fragment implements MoviesScreen {
     @Override
     public void onResume() {
         super.onResume();
+        moviesPresenter.refreshMovies(movie);
     }
 
     public void showMovies(List<Movie> movies) {

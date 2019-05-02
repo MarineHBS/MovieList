@@ -9,8 +9,7 @@ import retrofit2.http.Query;
 
 public interface MoviesApi {
     @GET("search")
-    Call<MoviesResult> getMovies(@Header("Authorization") String authorisation,
-                                  @Query("q") String artist,
+    Call<MoviesResult> getMovies( @Query("q") String title,
                                   @Query("type") String type,
                                   @Query("offset") int offset,
                                   @Query("limit") int limit);

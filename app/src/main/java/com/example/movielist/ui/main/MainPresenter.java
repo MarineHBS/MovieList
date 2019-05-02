@@ -21,7 +21,7 @@ public class MainPresenter extends Presenter<MainScreen> {
     }
 
     public void showMoviesSearchList(
-            String artistSearchTerm) {
-        screen.showMovies(artistSearchTerm);
+            String movieSearchTerm) {
+        screen.showMovies(movieSearchTerm);
     }
 }

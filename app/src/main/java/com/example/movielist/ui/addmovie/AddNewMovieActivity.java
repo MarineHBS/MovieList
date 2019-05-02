@@ -1,4 +1,4 @@
-package com.example.movielist;
+package com.example.movielist.ui.addmovie;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.content.Intent;
 
+import com.example.movielist.R;
 import com.example.movielist.ui.main.MainActivity;
 
 public class AddNewMovieActivity extends Activity {

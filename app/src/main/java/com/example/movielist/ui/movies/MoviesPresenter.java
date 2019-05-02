@@ -37,11 +37,19 @@ public class MoviesPresenter extends Presenter<MoviesScreen> {
 
     }
 
+<<<<<<< HEAD
     public void refreshMovies(final String moviesQuery) {
         networkExecutor.execute(new Runnable() {
             @Override
             public void run() {
                 moviesInteractor.getMovies(moviesQuery);
+=======
+    public void refreshMovies(){
+        networkExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                moviesInteractor.getMovies();
+>>>>>>> 088865a96af54a5c0ef479c038d7382aa07cb367
             }
         });
     }

@@ -7,7 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.example.movielist.AddNewMovieActivity;
+import com.example.movielist.ui.addmovie.AddNewMovieActivity;
 import com.example.movielist.R;
 
 public class MoviesActivity extends AppCompatActivity {

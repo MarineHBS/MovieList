@@ -70,7 +70,11 @@ public class MoviesFragment extends Fragment implements MoviesScreen {
     @Override
     public void onResume() {
         super.onResume();
+<<<<<<< HEAD
         moviesPresenter.refreshMovies(movie);
+=======
+        moviesPresenter.refreshMovies();
+>>>>>>> 088865a96af54a5c0ef479c038d7382aa07cb367
     }
 
     public void showMovies(List<Movie> movies) {

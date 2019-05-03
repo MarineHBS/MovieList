@@ -39,7 +39,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
         if(movie.getTitle() != null) {
             holder.tvTitle.setText(movie.getTitle());
-            holder.tvYear.setText(movie.getYear().toString());
+            holder.tvYear.setText(movie.getYear());
             holder.tvDescription.setText(movie.getDescription());
             holder.tvRating.setText(movie.getRating() + "/10");
             holder.tvGenre.setText(movie.getGenre());

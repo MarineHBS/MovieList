@@ -15,7 +15,7 @@ public class MovieResult {
 
     @SerializedName("Year")
     @Expose
-    public Integer year;
+    public String year;
 
     @SerializedName("Genre")
     @Expose

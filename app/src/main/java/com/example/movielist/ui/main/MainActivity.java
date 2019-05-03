@@ -2,7 +2,6 @@ package com.example.movielist.ui.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.content.Intent;
 import android.widget.Button;
@@ -36,7 +35,6 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
                 mainPresenter.showMoviesSearchList(etMovies.getText().toString());
             }
         });
-        Log.v("a", "ez: " + etMovies.getText());
     }
 
     @Override
@@ -53,8 +51,6 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
 
     @Override
     public void showMovies(String movieSearchTerm) {
-
-        Log.v("showmovies fgv", "ez: " + movieSearchTerm);
         Intent intent = new Intent(MainActivity.this, MoviesActivity.class);
         intent.putExtra(KEY_MOVIES, movieSearchTerm);
         startActivity(intent);

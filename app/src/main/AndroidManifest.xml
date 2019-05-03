@@ -5,7 +5,6 @@
 
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:name=".MovieListApplication"
         android:allowBackup="true"
@@ -15,7 +14,14 @@
         android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:icon">
+
+        <meta-data android:name="DATABASE" android:value="MovieList.db" />
+        <meta-data android:name="VERSION" android:value="6" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.example.movielist" />
+
         <activity
             android:name=".ui.movies.MoviesActivity"
             android:label="@string/title_activity_movies" />

@@ -91,7 +91,9 @@ public class MoviesFragment extends Fragment implements MoviesScreen {
 
         moviesList.clear();
         moviesList.add(movie);
+        movie.save();
         moviesAdapter.notifyDataSetChanged();
+
 
         if (moviesList.isEmpty()) {
             recyclerViewMovies.setVisibility(View.GONE);

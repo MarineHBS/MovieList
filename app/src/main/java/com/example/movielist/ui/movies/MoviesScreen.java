@@ -1,6 +1,6 @@
 package com.example.movielist.ui.movies;
 
-import com.example.movielist.model.Movie;
+import com.example.movielist.models.Movie;
 
 import java.util.List;
 

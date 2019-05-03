@@ -1,21 +1,11 @@
 package com.example.movielist.interactor.movies;
 
-import android.util.Log;
-import android.widget.Toast;
-
 import com.example.movielist.MovieListApplication;
 import com.example.movielist.interactor.movies.events.GetMovieEvent;
-import com.example.movielist.interactor.movies.events.GetMoviesEvent;
-import com.example.movielist.model.Movie;
-import com.example.movielist.model.MovieResult;
-import com.example.movielist.model.MoviesResult;
-import com.example.movielist.model.Token;
+import com.example.movielist.models.MovieResult;
 import com.example.movielist.network.MoviesApi;
-import com.example.movielist.network.TokenApi;
 
 import org.greenrobot.eventbus.EventBus;
-
-import java.util.List;
 
 import javax.inject.Inject;
 

@@ -1,8 +1,6 @@
 package com.example.movielist.interactor.movies.events;
 
-import android.content.ClipData;
-
-import com.example.movielist.model.Movie;
+import com.example.movielist.models.Movie;
 
 import java.util.List;
 

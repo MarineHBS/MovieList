@@ -1,10 +1,8 @@
-package com.example.movielist.model;
+package com.example.movielist.models;
 
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
 
 public class MovieResult {
 

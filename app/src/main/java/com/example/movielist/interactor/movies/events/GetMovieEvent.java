@@ -1,8 +1,6 @@
 package com.example.movielist.interactor.movies.events;
 
-import com.example.movielist.model.Movie;
-
-import java.util.List;
+import com.example.movielist.models.Movie;
 
 public class GetMovieEvent {
     private int code;

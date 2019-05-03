@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 import com.example.movielist.MovieListApplication;
 import com.example.movielist.R;
-import com.example.movielist.model.Movie;
+import com.example.movielist.models.Movie;
 import com.example.movielist.ui.main.MainActivity;
 
 import java.util.ArrayList;

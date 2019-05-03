@@ -1,6 +1,6 @@
 package com.example.movielist.network;
 
-import com.example.movielist.model.Token;
+import com.example.movielist.models.Token;
 
 import retrofit2.Call;
 import retrofit2.http.Field;

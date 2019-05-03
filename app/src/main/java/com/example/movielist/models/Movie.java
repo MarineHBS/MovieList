@@ -1,14 +1,12 @@
-package com.example.movielist.model;
+package com.example.movielist.models;
 
-import java.util.Objects;
 import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
 import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
 
 @ApiModel(description = "")
-public class Movie extends SugarRecord<Movie> {
+public class Movie extends SugarRecord {
 
     @SerializedName("id")
     private Integer movieId = null;

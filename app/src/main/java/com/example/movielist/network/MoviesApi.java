@@ -1,6 +1,6 @@
 package com.example.movielist.network;
 
-import com.example.movielist.model.MovieResult;
+import com.example.movielist.models.MovieResult;
 
 import retrofit2.Call;
 import retrofit2.http.*;

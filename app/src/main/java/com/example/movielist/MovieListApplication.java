@@ -11,6 +11,7 @@ public class MovieListApplication extends Application {
     @Override
     public void onCreate(){
         super.onCreate();
+
         injector = DaggerMovieListApplicationComponent.builder().
                 uIModule(
                         new UIModule(this)

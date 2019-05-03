@@ -7,10 +7,7 @@ import android.content.Intent;
 import android.widget.Button;
 import android.widget.EditText;
 
-<<<<<<< HEAD
 import com.example.movielist.MovieListApplication;
-=======
->>>>>>> 088865a96af54a5c0ef479c038d7382aa07cb367
 import com.example.movielist.R;
 import com.example.movielist.ui.movies.MoviesActivity;
 

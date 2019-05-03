@@ -20,7 +20,7 @@ public class NetworkModule {
     @Provides
     @Singleton
     public MoviesApi provideMoviesApi(Retrofit.Builder retrofitBuilder) {
-        return retrofitBuilder.baseUrl(NetworkConfig.BASE_URL).build().create(MoviesApi.class);
+        return retrofitBuilder.baseUrl(NetworkConfig.ENDPOINT_ADDRESS).build().create(MoviesApi.class);
     }
 
 

@@ -23,7 +23,6 @@ public class MoviesInteractor {
     MoviesApi moviesApi;
 
     @Inject
-<<<<<<< HEAD
     public MoviesInteractor(MoviesApi artistsApi) {
         this.moviesApi = artistsApi;
         MovieListApplication.injector.inject(this);
@@ -32,14 +31,20 @@ public class MoviesInteractor {
     public void getMovies(String movieQuery) {
         GetMoviesEvent event = new GetMoviesEvent();
         try {
-
             Call<MoviesResult> moviesQueryCall = moviesApi.getMovies(movieQuery, "movie", 0, 3);
-=======
-    public MoviesInteractor(MoviesApi moviesApi) {
-        this.moviesApi = moviesApi;
-        MovieListApplication.injector.inject(this);
+            Response<MoviesResult> response = moviesQueryCall.execute();
+            if (response.code() != 200) {
+                throw new Exception("Result code is not 200");
+            }
+            event.setCode(response.code());
+            event.setMovies(response.body().getMovies());
+            EventBus.getDefault().post(event);
+        } catch (Exception e) {
+            event.setThrowable(e);
+            EventBus.getDefault().post(event);
+        }
     }
-
+    /*
     public void getMovies() {
         GetMoviesEvent event = new GetMoviesEvent();
         try {
@@ -64,7 +69,6 @@ public class MoviesInteractor {
         try {
 
             Call<Movie> movieQueryCall = moviesApi.getMovieByTitle(title);
->>>>>>> 088865a96af54a5c0ef479c038d7382aa07cb367
 
             Response<Movie> response = movieQueryCall.execute();
             if (response.code() != 200) {
@@ -77,9 +81,5 @@ public class MoviesInteractor {
             event.setThrowable(e);
             EventBus.getDefault().post(event);
         }
-<<<<<<< HEAD
-
-=======
->>>>>>> 088865a96af54a5c0ef479c038d7382aa07cb367
-    }
+    }*/
 }

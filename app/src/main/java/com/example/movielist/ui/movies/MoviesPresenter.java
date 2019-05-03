@@ -1,9 +1,8 @@
 package com.example.movielist.ui.movies;
 
 import com.example.movielist.di.Network;
-import com.example.movielist.interactor.movies.MoviesInteractor;
-import com.example.movielist.interactor.movies.events.GetMoviesEvent;
-import com.example.movielist.network.NetworkModule;
+import com.example.movielist.interactor.movies.MovieInteractor;
+import com.example.movielist.interactor.movies.events.GetMovieEvent;
 import com.example.movielist.ui.Presenter;
 
 import org.greenrobot.eventbus.EventBus;
@@ -16,12 +15,12 @@ import javax.inject.Inject;
 
 public class MoviesPresenter extends Presenter<MoviesScreen> {
     Executor networkExecutor;
-    MoviesInteractor moviesInteractor;
+    MovieInteractor movieInteractor;
 
     @Inject
-    public MoviesPresenter(@Network Executor networkExecutor, MoviesInteractor moviesInteractor) {
+    public MoviesPresenter(@Network Executor networkExecutor, MovieInteractor movieInteractor) {
         this.networkExecutor = networkExecutor;
-        this.moviesInteractor = moviesInteractor;
+        this.movieInteractor = movieInteractor;
     }
 
     @Override
@@ -41,12 +40,12 @@ public class MoviesPresenter extends Presenter<MoviesScreen> {
         networkExecutor.execute(new Runnable() {
             @Override
             public void run() {
-                moviesInteractor.getMovies(moviesQuery);
+                movieInteractor.getMovies(moviesQuery);
             }
         });
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
+    /*@Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(final GetMoviesEvent event) {
         if (event.getThrowable() != null) {
             event.getThrowable().printStackTrace();
@@ -56,6 +55,20 @@ public class MoviesPresenter extends Presenter<MoviesScreen> {
         } else {
             if (screen != null) {
                 screen.showMovies(event.getMovies());
+            }
+        }
+    }*/
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEventMainThread(final GetMovieEvent event) {
+        if (event.getThrowable() != null) {
+            event.getThrowable().printStackTrace();
+            if (screen != null) {
+                screen.showNetworkError(event.getThrowable().getMessage());
+            }
+        } else {
+            if (screen != null) {
+                screen.showMovie(event.getMovie());
             }
         }
     }

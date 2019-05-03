@@ -1,7 +1,7 @@
 package com.example.movielist.network;
 
 public class NetworkConfig {
-    public static final String ENDPOINT_ADDRESS = "http://www.omdbapi.com/?apikey=4057cbfc";
+    public static final String ENDPOINT_ADDRESS = "http://www.omdbapi.com/";
     public static final String API_KEY = "4057cbfc";
 
     public static final String TOKEN_ENDPOINT_ADDRESS = "https://accounts.spotify.com/api/";

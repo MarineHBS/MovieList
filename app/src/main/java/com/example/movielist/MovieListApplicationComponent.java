@@ -1,6 +1,6 @@
 package com.example.movielist;
 
-import com.example.movielist.interactor.movies.MoviesInteractor;
+import com.example.movielist.interactor.movies.MovieInteractor;
 import com.example.movielist.network.NetworkModule;
 import com.example.movielist.ui.UIModule;
 import com.example.movielist.ui.main.MainActivity;
@@ -18,7 +18,7 @@ public interface MovieListApplicationComponent {
 
     void inject(MoviesFragment moviesFragment);
 
-    void inject(MoviesInteractor moviesInteractor);
+    void inject(MovieInteractor movieInteractor);
 
     void inject(MoviesPresenter moviesPresenter);
 }

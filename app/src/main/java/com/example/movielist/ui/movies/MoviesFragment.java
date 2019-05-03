@@ -26,8 +26,9 @@ public class MoviesFragment extends Fragment implements MoviesScreen {
     MoviesPresenter moviesPresenter;
 
     private EditText etMovie;
-    private String movie = "shawshank redemption";
+    private String movieTitle = "shawshank redemption";
     private List<Movie> moviesList;
+    private Movie movie;
     private MoviesAdapter moviesAdapter;
     private RecyclerView recyclerViewMovies;
 
@@ -39,7 +40,7 @@ public class MoviesFragment extends Fragment implements MoviesScreen {
     public void onAttach(final Context context) {
         super.onAttach(context);
 
-        movie = getActivity().getIntent().getStringExtra(MainActivity.KEY_MOVIES);
+        movieTitle = getActivity().getIntent().getStringExtra(MainActivity.KEY_MOVIES);
         moviesPresenter.attachScreen(this);
     }
 
@@ -54,7 +55,7 @@ public class MoviesFragment extends Fragment implements MoviesScreen {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_movies, container, false);
         etMovie = view.findViewById(R.id.etMovie);
-        etMovie.setText(movie);
+        etMovie.setText(movieTitle);
         recyclerViewMovies = view.findViewById(R.id.movies_recycler_view);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -70,13 +71,26 @@ public class MoviesFragment extends Fragment implements MoviesScreen {
     @Override
     public void onResume() {
         super.onResume();
-        moviesPresenter.refreshMovies(movie);
+        moviesPresenter.refreshMovies(movieTitle);
     }
 
     public void showMovies(List<Movie> movies) {
 
         moviesList.clear();
         moviesList.addAll(movies);
+        moviesAdapter.notifyDataSetChanged();
+
+        if (moviesList.isEmpty()) {
+            recyclerViewMovies.setVisibility(View.GONE);
+        } else {
+            recyclerViewMovies.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public void showMovie(Movie movie) {
+
+        moviesList.clear();
+        moviesList.add(movie);
         moviesAdapter.notifyDataSetChanged();
 
         if (moviesList.isEmpty()) {

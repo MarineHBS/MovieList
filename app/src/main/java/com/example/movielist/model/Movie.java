@@ -25,7 +25,15 @@ public class Movie   {
     private String genre = null;
 
     @SerializedName("rating")
-    private Integer rating = null;
+    private String rating = null;
+
+    Movie(String title, Integer year, String genre, String rating, String description){
+        this.title = title;
+        this.year = year;
+        this.genre = genre;
+        this.rating = rating;
+        this.description = description;
+    }
 
     /**
      **/
@@ -84,10 +92,10 @@ public class Movie   {
     /**
      **/
     @ApiModelProperty(required = true, value = "")
-    public Integer getRating() {
+    public String getRating() {
         return rating;
     }
-    public void setRating(Integer rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 

@@ -1,11 +1,14 @@
 package com.example.movielist.ui.movies;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.movielist.R;
 import com.example.movielist.model.Movie;
@@ -29,15 +32,24 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
         return new ViewHolder(itemView);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         Movie movie = moviesList.get(position);
 
-        holder.tvTitle.setText(movie.getTitle());
-        holder.tvYear.setText(movie.getYear());
-        holder.tvDescription.setText(movie.getDescription());
-        holder.tvRating.setText(movie.getRating());
-        holder.tvGenre.setText(movie.getGenre());
+        if(movie.getTitle() != null) {
+            holder.tvTitle.setText(movie.getTitle());
+            holder.tvYear.setText(movie.getYear().toString());
+            holder.tvDescription.setText(movie.getDescription());
+            holder.tvRating.setText(movie.getRating() + "/10");
+            holder.tvGenre.setText(movie.getGenre());
+        }else{
+            holder.tvTitle.setText("No such movie exists in our database");
+            holder.tvYear.setText("");
+            holder.tvDescription.setText("");
+            holder.tvRating.setText("");
+            holder.tvGenre.setText("");
+        }
     }
 
     @Override

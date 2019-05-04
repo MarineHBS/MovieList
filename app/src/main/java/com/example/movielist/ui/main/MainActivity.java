@@ -2,6 +2,7 @@ package com.example.movielist.ui.main;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.content.Intent;
 import android.widget.Button;
@@ -9,7 +10,10 @@ import android.widget.EditText;
 
 import com.example.movielist.MovieListApplication;
 import com.example.movielist.R;
+import com.example.movielist.models.Movie;
 import com.example.movielist.ui.movies.MoviesActivity;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -23,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //Movie m = Movie.last(Movie.class);
+        //Log.v("movieinmain", "movie titel: " + m.getTitle());
 
         MovieListApplication.injector.inject(this);
 
@@ -35,6 +41,14 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
                 mainPresenter.showMoviesSearchList(etMovies.getText().toString());
             }
         });
+        Button btnShowPersistedMovies = findViewById(R.id.btnShowPersistedMovies);
+        btnShowPersistedMovies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mainPresenter.showMovies();
+            }
+        });
+
     }
 
     @Override
@@ -53,6 +67,12 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     public void showMovies(String movieSearchTerm) {
         Intent intent = new Intent(MainActivity.this, MoviesActivity.class);
         intent.putExtra(KEY_MOVIES, movieSearchTerm);
+        startActivity(intent);
+    }
+    @Override
+    public void showPersistedMovies() {
+        Intent intent = new Intent(MainActivity.this, MoviesActivity.class);
+        intent.putExtra(KEY_MOVIES, "showPersistedMovies");
         startActivity(intent);
     }
 }

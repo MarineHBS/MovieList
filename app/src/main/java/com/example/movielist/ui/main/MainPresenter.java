@@ -24,4 +24,8 @@ public class MainPresenter extends Presenter<MainScreen> {
             String movieSearchTerm) {
         screen.showMovies(movieSearchTerm);
     }
+
+    public void showMovies() {
+        screen.showPersistedMovies();
+    }
 }

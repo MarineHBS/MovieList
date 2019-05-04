@@ -4,31 +4,28 @@ import io.swagger.annotations.ApiModel;
 
 import com.google.gson.annotations.SerializedName;
 import com.orm.SugarRecord;
+import com.orm.dsl.Unique;
 
-@ApiModel(description = "")
 public class Movie extends SugarRecord {
 
-    @SerializedName("id")
     private Integer movieId = null;
 
-    @SerializedName("title")
     private String title = null;
 
-    @SerializedName("description")
     private String description = null;
 
-    @SerializedName("year")
     private String year = null;
 
-    @SerializedName("genre")
     private String genre = null;
 
-    @SerializedName("rating")
     private String rating = null;
 
-    Movie(){}
+    public Movie(){
+        super();
+    }
 
-    Movie(String title, String year, String genre, String rating, String description){
+    public Movie(String title, String year, String genre, String rating, String description){
+        super();
         this.title = title;
         this.year = year;
         this.genre = genre;

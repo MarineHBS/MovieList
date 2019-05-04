@@ -45,19 +45,9 @@ public class MoviesPresenter extends Presenter<MoviesScreen> {
         });
     }
 
-    /*@Subscribe(threadMode = ThreadMode.MAIN)
-    public void onEventMainThread(final GetMoviesEvent event) {
-        if (event.getThrowable() != null) {
-            event.getThrowable().printStackTrace();
-            if (screen != null) {
-                screen.showNetworkError(event.getThrowable().getMessage());
-            }
-        } else {
-            if (screen != null) {
-                screen.showMovies(event.getMovies());
-            }
-        }
-    }*/
+    public void showPersistedMovies(){
+        screen.showMovies();
+    }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEventMainThread(final GetMovieEvent event) {

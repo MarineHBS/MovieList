@@ -38,42 +38,4 @@ public class MovieInteractor {
             EventBus.getDefault().post(event);
         }
     }
-    /*
-    public void getMovies() {
-        GetMoviesEvent event = new GetMoviesEvent();
-        try {
-
-            Call<List<Movie>> moviesQueryCall = moviesApi.getMovies();
-
-            Response<List<Movie>> response = moviesQueryCall.execute();
-            if (response.code() != 200) {
-                throw new Exception("Result code is not 200");
-            }
-            event.setCode(response.code());
-            event.setMovies(response.body());
-            EventBus.getDefault().post(event);
-        } catch (Exception e) {
-            event.setThrowable(e);
-            EventBus.getDefault().post(event);
-        }
-    }
-
-    public void getMovieByTitle(String title) {
-        GetMovieEvent event = new GetMovieEvent();
-        try {
-
-            Call<Movie> movieQueryCall = moviesApi.getMovieByTitle(title);
-
-            Response<Movie> response = movieQueryCall.execute();
-            if (response.code() != 200) {
-                throw new Exception("Result code is not 200");
-            }
-            event.setCode(response.code());
-            event.setMovie(response.body());
-            EventBus.getDefault().post(event);
-        } catch (Exception e) {
-            event.setThrowable(e);
-            EventBus.getDefault().post(event);
-        }
-    }*/
 }

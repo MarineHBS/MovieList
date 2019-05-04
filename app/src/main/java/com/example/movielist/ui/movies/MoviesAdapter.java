@@ -3,6 +3,7 @@ package com.example.movielist.ui.movies;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
     public void onBindViewHolder(ViewHolder holder, int position) {
         Movie movie = moviesList.get(position);
 
-        if(movie.getTitle() != null) {
+        if(movie == null){
+            Log.v("errorMovie", "no movie at pos: " + position);
+        }
+
+        if(movie != null && movie.getTitle() != null) {
             holder.tvTitle.setText(movie.getTitle());
             holder.tvYear.setText(movie.getYear());
             holder.tvDescription.setText(movie.getDescription());

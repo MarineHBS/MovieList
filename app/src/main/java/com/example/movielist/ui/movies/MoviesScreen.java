@@ -5,7 +5,7 @@ import com.example.movielist.models.Movie;
 import java.util.List;
 
 public interface MoviesScreen {
-    void showMovies(List<Movie> movies);
+    void showMovies();
 
     void showMovie(Movie movie);
 

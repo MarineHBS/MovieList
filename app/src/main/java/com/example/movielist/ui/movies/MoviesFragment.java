@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,8 +55,6 @@ public class MoviesFragment extends Fragment implements MoviesScreen {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_movies, container, false);
-        etMovie = view.findViewById(R.id.etMovie);
-        etMovie.setText(movieTitle);
         recyclerViewMovies = view.findViewById(R.id.movies_recycler_view);
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
@@ -71,13 +70,19 @@ public class MoviesFragment extends Fragment implements MoviesScreen {
     @Override
     public void onResume() {
         super.onResume();
-        moviesPresenter.refreshMovies(movieTitle);
+        if(movieTitle.equals("showPersistedMovies")){
+            moviesPresenter.showPersistedMovies();
+        }else {
+            moviesPresenter.refreshMovies(movieTitle);
+        }
     }
 
-    public void showMovies(List<Movie> movies) {
+    public void showMovies() {
 
         moviesList.clear();
-        moviesList.addAll(movies);
+        if(Movie.listAll(Movie.class) != null) {
+            moviesList.addAll(Movie.listAll(Movie.class));
+        }
         moviesAdapter.notifyDataSetChanged();
 
         if (moviesList.isEmpty()) {
@@ -91,10 +96,10 @@ public class MoviesFragment extends Fragment implements MoviesScreen {
 
         moviesList.clear();
         moviesList.add(movie);
-        movie.save();
+        if(!movie.getTitle().equals("No such movie exists in our database")) {
+            movie.save();
+        }
         moviesAdapter.notifyDataSetChanged();
-
-
         if (moviesList.isEmpty()) {
             recyclerViewMovies.setVisibility(View.GONE);
         } else {

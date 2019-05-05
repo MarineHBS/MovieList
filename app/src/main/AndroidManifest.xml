@@ -28,6 +28,10 @@
         <activity
             android:name=".ui.addmovie.AddNewMovieActivity"
             android:label="@string/title_activity_add_new_movie" />
+        <activity
+            android:name=".ui.editmovie.EditMovieActivity" />
+        <activity
+            android:name=".ui.moviedetails.MovieDetailsActivity" />
         <activity android:name=".ui.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

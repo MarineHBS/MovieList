@@ -6,6 +6,8 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:layout_margin="10dp"
+    android:clickable="true"
+    android:focusable="true"
     card_view:cardCornerRadius="4dp">
 
     <LinearLayout

@@ -96,7 +96,7 @@ public class MoviesFragment extends Fragment implements MoviesScreen {
 
         moviesList.clear();
         moviesList.add(movie);
-        if(!movie.getTitle().equals("No such movie exists in our database")) {
+        if(movie.getTitle() != null && Movie.findWithQuery(Movie.class, "Select * from MOVIE where title = ?", movie.getTitle()).size() == 0) {
             movie.save();
         }
         moviesAdapter.notifyDataSetChanged();

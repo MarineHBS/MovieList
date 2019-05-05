@@ -2,6 +2,8 @@ package com.example.movielist.ui.movies;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +13,8 @@ import android.widget.TextView;
 
 import com.example.movielist.R;
 import com.example.movielist.models.Movie;
+import com.example.movielist.ui.main.MainActivity;
+import com.example.movielist.ui.moviedetails.MovieDetailsActivity;
 
 import java.util.List;
 
@@ -33,12 +37,25 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        Movie movie = moviesList.get(position);
+    public void onBindViewHolder(final ViewHolder holder, int position) {
+        final Movie movie = moviesList.get(position);
+
+        CardView cardView = holder.itemView.findViewById(R.id.cardMovie);
+
+        cardView.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MovieDetailsActivity.class);
+                intent.putExtra("MOVIE_TITLE", movie.getTitle());
+                context.startActivity(intent);
+            }
+        });
 
         if(movie == null){
             Log.v("errorMovie", "no movie at pos: " + position);
         }
+
 
         if(movie != null && movie.getTitle() != null) {
             holder.tvTitle.setText(movie.getTitle());
@@ -74,6 +91,13 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.ViewHolder
             tvDescription = itemView.findViewById(R.id.tvDescription);
             tvRating = itemView.findViewById(R.id.tvRating);
             tvGenre = itemView.findViewById(R.id.tvGenre);
+            itemView.setOnClickListener( new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
     }
 }

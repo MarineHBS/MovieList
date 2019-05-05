@@ -1,18 +1,16 @@
-package com.example.movielist.ui.editmovie;
+package com.example.movielist.ui.moviedetails;
 
 import com.example.movielist.ui.Presenter;
-import com.example.movielist.ui.main.MainScreen;
 
 import javax.inject.Inject;
 
-public class EditMoviePresenter extends Presenter<EditMovieScreen> {
-
+public class MovieDetailsPresenter extends Presenter<MovieDetailsScreen> {
     @Inject
-    public EditMoviePresenter(){
+    public MovieDetailsPresenter(){
     }
 
     @Override
-    public void attachScreen(EditMovieScreen screen){
+    public void attachScreen(MovieDetailsScreen screen){
         super.attachScreen(screen);
     }
 
@@ -24,4 +22,6 @@ public class EditMoviePresenter extends Presenter<EditMovieScreen> {
     public void editMovie() {
         screen.editMovie();
     }
+
+    public void deleteMovie(){ screen.deleteMovie();}
 }

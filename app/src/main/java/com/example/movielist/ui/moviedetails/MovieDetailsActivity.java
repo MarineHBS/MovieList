@@ -8,21 +8,29 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.movielist.MovieListApplication;
 import com.example.movielist.R;
 import com.example.movielist.models.Movie;
 import com.example.movielist.ui.editmovie.EditMovieActivity;
 import com.example.movielist.ui.main.MainActivity;
 import com.example.movielist.ui.movies.MoviesActivity;
 
-public class MovieDetailsActivity extends AppCompatActivity {
+import javax.inject.Inject;
+
+public class MovieDetailsActivity extends AppCompatActivity implements MovieDetailsScreen{
 
     String movieTitle;
     Movie m;
+
+    @Inject
+    MovieDetailsPresenter movieDetailsPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_details);
+
+        MovieListApplication.injector.inject(this);
 
         movieTitle = getIntent().getStringExtra("MOVIE_TITLE");
 
@@ -46,23 +54,44 @@ public class MovieDetailsActivity extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent intent = new Intent(MovieDetailsActivity.this, EditMovieActivity.class);
-                intent.putExtra("MOVIE_TITLE", m.getTitle());
-                startActivity(intent);
+                movieDetailsPresenter.editMovie();
             }
-
         });
 
         Button delete = findViewById(R.id.btnDeleteMovie);
         delete.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Movie.executeQuery("DELETE from MOVIE where title = ?", m.getTitle());
-                Intent intent = new Intent(MovieDetailsActivity.this, MainActivity.class);
-                startActivity(intent);
+                movieDetailsPresenter.deleteMovie();
             }
 
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        movieDetailsPresenter.attachScreen(this);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        movieDetailsPresenter.detachScreen();
+    }
+
+    @Override
+    public void editMovie() {
+        Intent intent = new Intent(MovieDetailsActivity.this, EditMovieActivity.class);
+        intent.putExtra("MOVIE_TITLE", m.getTitle());
+        startActivity(intent);
+    }
+
+    @Override
+    public void deleteMovie() {
+        Movie.executeQuery("DELETE from MOVIE where title = ?", m.getTitle());
+        Intent intent = new Intent(MovieDetailsActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 }

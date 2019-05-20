@@ -15,7 +15,6 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import static com.example.movielist.TestHelper.setTestInjector;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -28,14 +27,14 @@ public class MoviesTest {
 
     @Before
     public void setup() {
-        /*DaggerTestComponent injector = setTestInjector();
-        injector.inject(this);*/
+        // DaggerTestComponent injector = setTestInjector();
+        //injector.inject(this);
         moviesScreen = mock(MoviesScreen.class);
         moviesPresenter.attachScreen(moviesScreen);
     }
 
     @Test
-    public void testArtists() {
+    public void testMovies() {
         String query = "Shawshank redemption";
         moviesPresenter.refreshMovies(query);
 

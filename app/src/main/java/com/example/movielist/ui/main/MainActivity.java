@@ -16,6 +16,10 @@ import com.example.movielist.ui.movies.MoviesActivity;
 import java.util.List;
 
 import javax.inject.Inject;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
+
+
 
 public class MainActivity extends AppCompatActivity implements MainScreen {
     public static final String KEY_MOVIES = "KEY_MOVIES";
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements MainScreen {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Fabric.with(this, new Crashlytics());
         //Movie m = Movie.last(Movie.class);
         //Log.v("movieinmain", "movie titel: " + m.getTitle());
 

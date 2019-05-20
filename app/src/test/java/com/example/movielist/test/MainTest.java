@@ -11,7 +11,6 @@ import org.robolectric.RobolectricTestRunner;
 
 import javax.inject.Inject;
 
-import static com.example.movielist.TestHelper.setTestInjector;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -24,8 +23,8 @@ public class MainTest {
 
     @Before
     public void setup() {
-        /*DaggerTestComponent injector = setTestInjector();
-        injector.inject(this);*/
+        // DaggerTestComponent injector = setTestInjector();
+        // injector.inject(this);
         mainScreen = mock(MainScreen.class);
         mainPresenter.attachScreen(mainScreen);
     }

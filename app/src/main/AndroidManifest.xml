@@ -5,6 +5,8 @@
 
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:name=".MovieListApplication"
         android:allowBackup="true"
@@ -21,7 +23,10 @@
         <meta-data android:name="VERSION" android:value="3" />
         <meta-data android:name="QUERY_LOG" android:value="true" />
         <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="com.example.movielist.models" />
-
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="96f1c9077c766c43465312f200af28b76fa3706c"
+            />
         <activity
             android:name=".ui.movies.MoviesActivity"
             android:label="@string/title_activity_movies" />

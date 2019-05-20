@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "447766840888",
+    "firebase_url": "https://movielist-1fb02.firebaseio.com",
+    "project_id": "movielist-1fb02",
+    "storage_bucket": "movielist-1fb02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447766840888:android:3f4942e3b8ec88ee",
+        "android_client_info": {
+          "package_name": "com.example.movielist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "447766840888-peo74n02s6avbq1u56q7tpt06c6243e8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGIqITpeJKsu7yiqaEaEhWhCdDiEdc6b4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "447766840888-peo74n02s6avbq1u56q7tpt06c6243e8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
